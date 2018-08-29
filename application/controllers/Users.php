@@ -73,6 +73,11 @@ class Users extends CI_Controller {
      * User registration
      */
     public function registration(){
+        if($this->session->userdata('isUserLoggedIn')){
+            $data['user'] = $this->user->getRows(array('id'=>$this->session->userdata('userId')));
+            redirect('users/account/');
+            
+        }
         $data = array();
         $userData = array();
         if($this->input->post('regisSubmit')){
