@@ -44,8 +44,10 @@
                             <input type="password" class="form-control" name="conf_password" placeholder="Confirm password" required="">
                             <?php echo form_error('conf_password','<span class="help-block">','</span>'); ?>
                             <div class="form-button">
-                                <input id="submit" name="regisSubmit" type="submit" class="ibtn" value="Submit">Register</button>
+                                
+                                <button id="submit" type="submit" class="ibtn" name="regisSubmit" value="submit">Login</button>
                             </div>
+
                         </form>
                         <!--div class="other-links">
                             <span>Or register with</span><a href="#">Facebook</a><a href="#">Google</a><a href="#">Linkedin</a>
