@@ -35,17 +35,17 @@
                         </div>
                         <form  action="" method="post">
                             <input class="form-control" type="text" name="name" placeholder="Name" required="" value="<?php echo !empty($user['name'])?$user['name']:''; ?>">
-                            <?php echo form_error('name','<span class="help-block">','</span>'); ?>
+                            <?php echo form_error('name','<span class="label label-success" style="color:white">','</span>'); ?>
                             <input class="form-control" type="email" name="email" placeholder="Email" required="" value="<?php echo !empty($user['email'])?$user['email']:''; ?>">
-                            <?php echo form_error('email','<span class="help-block">','</span>'); ?>
+                            <?php echo form_error('email','<span class="label label-success" style="color:blue">','</span>'); ?>
                             <input type="text" class="form-control" name="phone" placeholder="Phone" value="<?php echo !empty($user['phone'])?$user['phone']:''; ?>">
                             <input type="password" class="form-control" name="password" placeholder="Password" required="">
-                            <?php echo form_error('password','<span class="help-block">','</span>'); ?>
+                            <?php echo form_error('password','<span class="label label-success" style="color:blue">','</span>'); ?>
                             <input type="password" class="form-control" name="conf_password" placeholder="Confirm password" required="">
-                            <?php echo form_error('conf_password','<span class="help-block">','</span>'); ?>
+                            <?php echo form_error('conf_password','<span class="label label-success style="color:blue" >','</span>'); ?>
                             <div class="form-button">
                                 
-                                <button id="submit" type="submit" class="ibtn" name="regisSubmit" value="submit">Login</button>
+                                <button id="submit" type="submit" class="ibtn" name="regisSubmit" value="submit">Register</button>
                             </div>
 
                         </form>
