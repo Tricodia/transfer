@@ -16,9 +16,21 @@ class Users extends CI_Controller {
     public function account(){
         $data = array();
         if($this->session->userdata('isUserLoggedIn')){
+            if($this->session->userdata('role') == "admin")
+            {
+                    $this->load->view('users/admin_account', $data);
+            }
+            elseif($this->session->userdata('role') == "constable")
+            {
+                    $this->load->view('users/constable_account', $data);
+            }
+            elseif($this->session->userdata('role') == "sup_admin")
+            {
+                    $this->load->view('users/sup_admin_account', $data);
+            }
             $data['user'] = $this->user->getRows(array('id'=>$this->session->userdata('userId')));
             //load the view
-            $this->load->view('users/account', $data);
+            //$this->load->view('users/account', $data);
         }else{
             redirect('users/login');
         }
@@ -44,14 +56,14 @@ class Users extends CI_Controller {
                 $con['returnType'] = 'single';
                 $con['conditions'] = array(
                     'email'=>$this->input->post('email'),
-                    'password' => md5($this->input->post('password')),
-                    'status' => '1'
+                    'password' => md5($this->input->post('password'))
                 );
                 $checkLogin = $this->user->getRows($con);
                 if($checkLogin){
                     $this->session->set_userdata('isUserLoggedIn',TRUE);
                     $this->session->set_userdata('userId',$checkLogin['id']);
-                    redirect('users/account/');
+                    $this->session->set_userdata('role',$checkLogin['role']);
+                    
                 }else{
                     $data['error_msg'] = 'Wrong email or password, please try again.';
                 }
@@ -61,12 +73,27 @@ class Users extends CI_Controller {
         //trying auto redirect on login
         if($this->session->userdata('isUserLoggedIn')){
             $data['user'] = $this->user->getRows(array('id'=>$this->session->userdata('userId')));
-            redirect('users/account/');
+            if($this->session->userdata('role') == "admin")
+            {
+                    $this->load->view('users/admin_account', $data);
+            }
+            elseif($this->session->userdata('role') == "constable")
+            {
+                    $this->load->view('users/constable_account', $data);
+            }
+            elseif($this->session->userdata('role') == "sup_admin")
+            {
+                    $this->load->view('users/sup_admin_account', $data);
+            }
             
+        }
+        else
+        {
+            $this->load->view('login', $data);
         }
 
         //load the view
-        $this->load->view('login', $data);
+        
     }
     
     /*
@@ -75,7 +102,18 @@ class Users extends CI_Controller {
     public function registration(){
         if($this->session->userdata('isUserLoggedIn')){
             $data['user'] = $this->user->getRows(array('id'=>$this->session->userdata('userId')));
-            redirect('users/account/');
+            if($this->session->userdata('role') == "admin")
+            {
+                    $this->load->view('users/admin_account', $data);
+            }
+            elseif($this->session->userdata('role') == "constable")
+            {
+                    $this->load->view('users/constable_account', $data);
+            }
+            elseif($this->session->userdata('role') == "sup_admin")
+            {
+                    $this->load->view('users/sup_admin_account', $data);
+            }
             
         }
         $data = array();
@@ -90,7 +128,8 @@ class Users extends CI_Controller {
                 'name' => strip_tags($this->input->post('name')),
                 'email' => strip_tags($this->input->post('email')),
                 'password' => md5($this->input->post('password')),
-                'phone' => strip_tags($this->input->post('phone'))
+                'phone' => strip_tags($this->input->post('phone')),
+                'role' => strip_tags($this->input->post('role'))
             );
 
             if($this->form_validation->run() == true){

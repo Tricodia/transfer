@@ -43,6 +43,11 @@
                             <?php echo form_error('password','<span class="label label-success" style="color:blue">','</span>'); ?>
                             <input type="password" class="form-control" name="conf_password" placeholder="Confirm password" required="">
                             <?php echo form_error('conf_password','<span class="label label-success style="color:blue" >','</span>'); ?>
+                            <select class="form-control" name="role">
+                              <option value="admin">Admin</option>
+                              <option value="sup_admin">Super Admin</option>
+                              <option value="constable">Constable</option>
+                            </select>
                             <div class="form-button">
                                 
                                 <button id="submit" type="submit" class="ibtn" name="regisSubmit" value="submit">Register</button>
