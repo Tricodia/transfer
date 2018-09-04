@@ -65,4 +65,11 @@ class User extends CI_Model{
         }
     }
 
+    public function update($data,$id) {
+
+    $this->db->where('id', $id);
+    $update = $this->db->update($this->userTbl,$data);
+    return true;
+}
+
 }

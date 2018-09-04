@@ -34,11 +34,42 @@ class Users extends CI_Controller {
         }else{
             redirect('users/login');
         }
+        
     }
     
     /*
      * User login
      */
+
+    public  function update_data()
+    {   
+        $data = array();
+        $userData = array();
+        if($this->input->post('editSubmit')){
+            $this->form_validation->set_rules('name', 'Name', 'required');
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email|callback_email_check');
+            $id1=strip_tags($this->input->post('id'));
+
+            $userData = array(
+                'name' => strip_tags($this->input->post('name')),
+                'email' => strip_tags($this->input->post('email')),
+                'phone' => strip_tags($this->input->post('phone'))
+            );
+            //echo $userData[name],$userData[email],$userData[phone];
+            if(true){
+                echo "in function ";
+                $update = $this->user->update($userData,$id1);
+                redirect('users/login');
+                if($update){
+                    $this->session->set_userdata('success_msg', 'Your registration was successfully. Please login to your account.');
+                    redirect('users/login');
+                }else{
+                    $data['error_msg'] = 'Some problems occured, please try again.';
+                    echo $data['error_msg'];
+                }
+            }
+        }
+    }
     public function login(){
         $data = array();
         if($this->session->userdata('success_msg')){
@@ -63,6 +94,7 @@ class Users extends CI_Controller {
                     $this->session->set_userdata('isUserLoggedIn',TRUE);
                     $this->session->set_userdata('userId',$checkLogin['id']);
                     $this->session->set_userdata('role',$checkLogin['role']);
+                    $this->session->set_userdata('id',$checkLogin['id']);
                     
                 }else{
                     $data['error_msg'] = 'Wrong email or password, please try again.';
