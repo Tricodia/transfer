@@ -40,7 +40,7 @@
 	</nav>
 	<div class="jumbotron">
 		<h1 class="display-4">Welcome</h1>
-		<p class="lead">This portal is ment for applying transfer requests for police stations under Palakkad SP office.<br/> Please select the type of transfer you require from the above menu</p>
+		<p class="lead">This portal is meant for applying transfer requests for police stations under Palakkad SP office.<br/> Please select the type of transfer you require from the above menu</p>
 	</div>
 
 	
@@ -55,9 +55,9 @@
 			<p><b>Designation: </b>Police Constable</p>
 			<p><b>ID: </b><?php echo $user['id']; ?></p>
 		</div>
-		<button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModal">Edit</button>
+		<button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModal">Edit</button><br/>
 
-	</div><!-- container end -->
+	</div><br/><br/><!-- container end -->
 	<!-- Button trigger modal -->
 
 	<!-- Modal -->
@@ -82,7 +82,7 @@
 							<?php echo form_error('email','<span class="help-block">','</span>'); ?>
 						</div>
 						<div class="form-group">
-							<input type="text" required="" class="form-control" name="phone" placeholder="Phone" value="<?php echo !empty($user['phone'])?$user['phone']:''; ?>">
+							<input type="number" required="" class="form-control" name="phone" placeholder="Phone" value="<?php echo !empty($user['phone'])?$user['phone']:''; ?>">
 						</div>
 
 						<div class="form-group">
@@ -108,17 +108,18 @@
 						</label>
 					</div>
 				</div>
-				<div class="form-group">
+				<!-- <div class="form-group">
 					<input type="submit" name="editSubmit" class="btn-primary" value="Submit"/>
-				</div>
-			</form>
+				</div> -->
+			
 
 
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			<button type="button" class="btn btn-primary">Save changes</button>
+			<button type="submit" name="editSubmit" class="btn btn-primary" value="Submit">Save changes</button>
 		</div>
+		</form>
 	</div>
 </div>
 </div>
