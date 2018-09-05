@@ -53,7 +53,8 @@ class Users extends CI_Controller {
             $userData = array(
                 'name' => strip_tags($this->input->post('name')),
                 'email' => strip_tags($this->input->post('email')),
-                'phone' => strip_tags($this->input->post('phone'))
+                'phone' => strip_tags($this->input->post('phone')),
+                'gender' => strip_tags($this->input->post('gender'))
             );
             //echo $userData[name],$userData[email],$userData[phone];
             if(true){
@@ -95,6 +96,7 @@ class Users extends CI_Controller {
                     $this->session->set_userdata('userId',$checkLogin['id']);
                     $this->session->set_userdata('role',$checkLogin['role']);
                     $this->session->set_userdata('id',$checkLogin['id']);
+                    $this->session->set_userdata('gender',$checkLogin['gender']);
                     
                 }else{
                     $data['error_msg'] = 'Wrong email or password, please try again.';
@@ -202,5 +204,18 @@ class Users extends CI_Controller {
         } else {
             return TRUE;
         }
+    }
+
+    public function vacancy(){
+        $data = array();
+        if($this->session->userdata('isUserLoggedIn')){
+            $data['user'] = $this->user->getVacancy();
+            //load the view
+            $this->load->view('users/vacancy', $data);
+
+        }else{
+            redirect('users/login');
+        }
+        
     }
 }

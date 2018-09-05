@@ -22,6 +22,9 @@
 				<li class="nav-item ">
 					<a class="nav-link" href="#">Request Transfer</a>
 				</li>
+				<li class="nav-item ">
+					<a class="nav-link" href="<?php echo base_url(); ?>index.php/users/vacancy">Available Vacancies</a>
+				</li>
 				<!-- <li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Dropdown link
@@ -52,6 +55,7 @@
 			<p><b>Name: </b><?php echo $user['name']; ?></p>
 			<p><b>Email: </b><?php echo $user['email']; ?></p>
 			<p><b>Phone: </b><?php echo $user['phone']; ?></p>
+			<p><b>Gender: </b><?php echo $user['gender']; ?></p>
 			<p><b>Designation: </b>Police Constable</p>
 			<p><b>ID: </b><?php echo $user['id']; ?></p>
 		</div>
@@ -111,21 +115,20 @@
 				<!-- <div class="form-group">
 					<input type="submit" name="editSubmit" class="btn-primary" value="Submit"/>
 				</div> -->
-			
+				
 
 
-		</div>
-		<div class="modal-footer">
-			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			<button type="submit" name="editSubmit" class="btn btn-primary" value="Submit">Save changes</button>
-		</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="submit" name="editSubmit" class="btn btn-primary" value="Submit">Save changes</button>
+			</div>
 		</form>
 	</div>
-</div>
-</div>
-<script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>js/popper.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>js/bootstrap.js"></script>
+
+	<script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>js/popper.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>js/bootstrap.js"></script>
 
 </body>
 </html>
