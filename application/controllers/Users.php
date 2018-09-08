@@ -218,4 +218,17 @@ class Users extends CI_Controller {
         }
         
     }
+
+    public function request_transfer(){
+        $data = array();
+        if($this->session->userdata('isUserLoggedIn')){
+            $data['user'] = $this->user->getVacancy();
+            //load the view
+            $this->load->view('users/request', $data);
+
+        }else{
+            redirect('users/login');
+        }
+        
+    }
 }
