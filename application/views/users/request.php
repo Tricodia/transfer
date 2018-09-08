@@ -20,7 +20,7 @@
 					<a class="nav-link" href="#">General Transfer</a>
 				</li>
 				<li class="nav-item ">
-					<a class="nav-link" href="#">Request Transfer</a>
+					<a class="nav-link" href="<?php echo base_url(); ?>index.php/users/request_transfer">Request Transfer</a>
 				</li>
 				<li class="nav-item active">
 					<a class="nav-link" href="<?php echo base_url(); ?>index.php/users/vacancy">Available Vacancies</a>
