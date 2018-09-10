@@ -14,7 +14,7 @@
         <div class="website-logo">
             <a href="index.html">
                 <div class="logo">
-                    <img class="logo-size" src="<?php echo base_url(); ?>images/logo-light.svg" alt="">
+                    <img class="logo-size" src="<?php echo base_url(); ?>images/logo-light.svg">
                 </div>
             </a>
         </div>
