@@ -56,43 +56,53 @@
 						<select class="form-control" id="exampleFormControlSelect1">
 							<?php
 							foreach ($user->result() as $row)  
-							{  
-
+								{  ?>
+									
+									<option><?php echo $row->st_id;?></option>  
+									
+									
+								<?php }
+								?>
 								
-								echo '<option>'+$row->st_name+'</option>';
-								
-							}
-							?>
-							
-						</select>
-					</div>
-					<div class="form-group">
-						<label for="exampleFormControlSelect1">Select Station 2</label>
-						<select class="form-control" id="exampleFormControlSelect1">
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<label for="exampleFormControlSelect1">Select Station 3</label>
-						<select class="form-control" id="exampleFormControlSelect1">
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
-						</select>
-					</div>
-				</form>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="exampleFormControlSelect1">Select Station 2</label>
+							<select class="form-control" id="exampleFormControlSelect1">
+								<?php
+								foreach ($user->result() as $row)  
+									{  ?>
+										
+										<option><?php echo $row->st_id;?></option>  
+										
+										
+									<?php }
+									?>
+									
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="exampleFormControlSelect1">Select Station 3</label>
+								<select class="form-control" id="exampleFormControlSelect1">
+									<?php
+									foreach ($user->result() as $row)  
+										{  ?>
+											
+											<option><?php echo $row->st_id;?></option>  
+											
+											
+										<?php }
+										?>
+										
+									</select>
+								</div>
+							</form>
 
-			</div>
-		</div>
-		<div class="col-sm-3"></div></div>
-		<br/><br/><!-- container end -->
-		<!-- Button trigger modal -->
+						</div>
+					</div>
+					<div class="col-sm-3"></div></div>
+					<br/><br/><!-- container end -->
+					<!-- Button trigger modal -->
 
-	</body>
-	</html>
+				</body>
+				</html>

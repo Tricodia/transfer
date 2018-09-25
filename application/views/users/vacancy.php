@@ -63,7 +63,7 @@
 				<tbody>
 					<?php
 					foreach ($user->result() as $row)  
-					{  
+					{  ?>
 						<tr>  
 							<td><?php echo $row->st_id;?></td>  
 							<td><?php echo $row->st_name;?></td> 
@@ -73,8 +73,8 @@
 							<td><?php echo $row->pos4;?></td> 
 							<td><?php echo $row->pos5;?></td>  
 						</tr>  
-					}
-					?>  
+					<?php }
+					?>
 				</tbody>
 			</table>
 
