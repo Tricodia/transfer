@@ -54,6 +54,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 */
 $route['default_controller'] = 'users/login';
+$route['request'] = 'users/request_transfer';
 // $route['(:any)'] = 'pages/view/$1';
 $route['stud'] = "Stud_controller"; 
 $route['stud/add'] = 'Stud_controller/add_student'; 

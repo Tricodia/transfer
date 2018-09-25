@@ -19,10 +19,10 @@
 				<li class="nav-item">
 					<a class="nav-link" href="#">General Transfer</a>
 				</li>
-				<li class="nav-item ">
+				<li class="nav-item active">
 					<a class="nav-link" href="<?php echo base_url(); ?>index.php/users/request_transfer">Request Transfer</a>
 				</li>
-				<li class="nav-item active">
+				<li class="nav-item">
 					<a class="nav-link" href="<?php echo base_url(); ?>index.php/users/vacancy">Available Vacancies</a>
 				</li>
 				<!-- <li class="nav-item dropdown">
@@ -41,43 +41,58 @@
 			</ul>
 		</div>
 	</nav>
-	
-	<div class="row">
-	<div class="col-sm-3"></div>
-	<div class="col-sm-6">
-	<div class="container">
-		<form>
-			<div class="form-group">
-				<label for="exampleFormControlSelect1">Select Station 1</label>
-				<select class="form-control" id="exampleFormControlSelect1">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-					<option>5</option>
-				</select>
-			</div>
-			<div class="form-group">
-				<label for="exampleFormControlSelect2">Example multiple select</label>
-				<select multiple class="form-control" id="exampleFormControlSelect2">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					<option>4</option>
-					<option>5</option>
-				</select>
-			</div>
-			<div class="form-group">
-				<label for="exampleFormControlTextarea1">Example textarea</label>
-				<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-			</div>
-		</form>
-		
+	<div class="jumbotron">
+		<h1 class="display-4">Welcome</h1>
+		<p class="lead">This portal is meant for applying transfer requests for police stations under Palakkad SP office.<br/> Please select the type of transfer you require from the above menu</p>
 	</div>
-</div>
-<div class="col-sm-3"></div></div>
-	<br/><br/><!-- container end -->
-	<!-- Button trigger modal -->
 
-</body>
-</html>
+	<div class="row">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-6">
+			<div class="container">
+				<form>
+					<div class="form-group">
+						<label for="exampleFormControlSelect1">Select Station 1</label>
+						<select class="form-control" id="exampleFormControlSelect1">
+							<?php
+							foreach ($user->result() as $row)  
+							{  
+
+								
+								echo '<option>'+$row->st_name+'</option>';
+								
+							}
+							?>
+							
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="exampleFormControlSelect1">Select Station 2</label>
+						<select class="form-control" id="exampleFormControlSelect1">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="exampleFormControlSelect1">Select Station 3</label>
+						<select class="form-control" id="exampleFormControlSelect1">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+						</select>
+					</div>
+				</form>
+
+			</div>
+		</div>
+		<div class="col-sm-3"></div></div>
+		<br/><br/><!-- container end -->
+		<!-- Button trigger modal -->
+
+	</body>
+	</html>

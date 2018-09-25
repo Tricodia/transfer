@@ -21,7 +21,7 @@
 					<a class="nav-link" href="#">General Transfer</a>
 				</li>
 				<li class="nav-item ">
-					<a class="nav-link" href="#">Request Transfer</a>
+					<a class="nav-link" href="<?php echo base_url(); ?>index.php/request">Request Transfer</a>
 				</li>
 				<li class="nav-item active">
 					<a class="nav-link" href="<?php echo base_url(); ?>index.php/users/vacancy">Available Vacancies</a>
@@ -61,10 +61,10 @@
 					</tr>
 				</thead>
 				<tbody>
-					<?php  
+					<?php
 					foreach ($user->result() as $row)  
 					{  
-						?><tr>  
+						<tr>  
 							<td><?php echo $row->st_id;?></td>  
 							<td><?php echo $row->st_name;?></td> 
 							<td><?php echo $row->pos1;?></td>  
@@ -73,7 +73,7 @@
 							<td><?php echo $row->pos4;?></td> 
 							<td><?php echo $row->pos5;?></td>  
 						</tr>  
-					<?php }  
+					}
 					?>  
 				</tbody>
 			</table>
