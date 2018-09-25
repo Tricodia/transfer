@@ -57,43 +57,43 @@
 							<?php
 							foreach ($user->result() as $row)  
 								{  ?>
-									
+
 									<option><?php echo $row->st_id;?></option>  
-									
-									
+
+
 								<?php }
 								?>
-								
+
 							</select>
 						</div>
 						<div class="form-group">
 							<label for="exampleFormControlSelect1">Select Station 2</label>
-							<select class="form-control" id="exampleFormControlSelect1">
+							<select class="form-control" id="exampleFormControlSelect2">
 								<?php
 								foreach ($user->result() as $row)  
 									{  ?>
-										
+
 										<option><?php echo $row->st_id;?></option>  
-										
-										
+
+
 									<?php }
 									?>
-									
+
 								</select>
 							</div>
 							<div class="form-group">
 								<label for="exampleFormControlSelect1">Select Station 3</label>
-								<select class="form-control" id="exampleFormControlSelect1">
+								<select class="form-control" id="exampleFormControlSelect3">
 									<?php
 									foreach ($user->result() as $row)  
 										{  ?>
-											
+
 											<option><?php echo $row->st_id;?></option>  
-											
-											
+
+
 										<?php }
 										?>
-										
+
 									</select>
 								</div>
 							</form>
@@ -103,6 +103,17 @@
 					<div class="col-sm-3"></div></div>
 					<br/><br/><!-- container end -->
 					<!-- Button trigger modal -->
+					<script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.js"></script>
+					<script type="text/javascript">
+						
+						$('#exampleFormControlSelect1').change(function() {
+							// console.log("sd");
+							// dropdownval = $(this).val();
+							// $('.form-control').not(this).find('option[value="' + dropdownval + '"]').remove();
+							var index = $('#exampleFormControlSelect1').get(0).selectedIndex;
+							$('#exampleFormControlSelect2 option:eq(' + index + ')').remove();
+						});
+					</script>
 
 				</body>
 				</html>
