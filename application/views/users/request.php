@@ -51,24 +51,10 @@
 		<div class="col-sm-6">
 			<div class="container">
 				<form>
-					<div class="form-group">
-						<label for="exampleFormControlSelect1">Select Station 1</label>
-						<select class="form-control" id="exampleFormControlSelect1">
-							<?php
-							foreach ($user->result() as $row)  
-								{  ?>
-
-									<option><?php echo $row->st_id;?></option>  
-
-
-								<?php }
-								?>
-
-							</select>
-						</div>
+					<div id="selection_container">
 						<div class="form-group">
-							<label for="exampleFormControlSelect1">Select Station 2</label>
-							<select class="form-control" id="exampleFormControlSelect2">
+							<label for="exampleFormControlSelect1">Select Station 1</label>
+							<select class="form-control" id="exampleFormControlSelect1" name="1">
 								<?php
 								foreach ($user->result() as $row)  
 									{  ?>
@@ -82,8 +68,8 @@
 								</select>
 							</div>
 							<div class="form-group">
-								<label for="exampleFormControlSelect1">Select Station 3</label>
-								<select class="form-control" id="exampleFormControlSelect3">
+								<label for="exampleFormControlSelect1">Select Station 2</label>
+								<select class="form-control" id="exampleFormControlSelect2">
 									<?php
 									foreach ($user->result() as $row)  
 										{  ?>
@@ -96,24 +82,50 @@
 
 									</select>
 								</div>
-							</form>
+							</div>
+							
+							<div class="form-button">
+								<input type="button" class="more" value="Add">
+							</div>
+						</form>
 
-						</div>
 					</div>
-					<div class="col-sm-3"></div></div>
-					<br/><br/><!-- container end -->
-					<!-- Button trigger modal -->
-					<script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.js"></script>
-					<script type="text/javascript">
-						
-						$('#exampleFormControlSelect1').change(function() {
+				</div>
+				<div class="col-sm-3"></div></div>
+				<br/><br/><!-- container end -->
+				<!-- Button trigger modal -->
+				<script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.js"></script>
+				<script type="text/javascript">
+
+					$('#exampleFormControlSelect1').change(function() {
 							// console.log("sd");
 							// dropdownval = $(this).val();
 							// $('.form-control').not(this).find('option[value="' + dropdownval + '"]').remove();
 							var index = $('#exampleFormControlSelect1').get(0).selectedIndex;
 							$('#exampleFormControlSelect2 option:eq(' + index + ')').remove();
 						});
-					</script>
 
-				</body>
-				</html>
+					var c = 2;
+					$('.more').on('click', function () {
+						c++;
+						var select_content = '<div class="form-group">\n'+
+						'<label for="exampleFormControlSelect1">Select Station '+ c +'</label>\n'+
+						'<select class="form-control" id="exampleFormControlSelect2">\n'+
+						
+
+						'<option>1</option>  \n'+
+						'<option>2</option>  \n'+
+						'<option>3</option>  \n'+
+						'<option>4</option>  \n'+
+
+
+						
+
+						'</select>\n'+
+						'</div>\n';
+						$('#selection_container').append(select_content);
+					});
+				</script>
+
+			</body>
+			</html>
