@@ -22,32 +22,34 @@
             <div class="img-holder">
                 <div class="bg"></div>
                 <div class="info-holder">
+
                 </div>
-                <div class="form-holder">
-                    <div class="form-content">
-                        <div class="form-items">
-                            <h3>Palakkad Police Online Transfer Portal</h3>
-                            <p>Login to access the portal</p>
-                            <div class="page-links">
-                                <a href="<?php echo base_url(); ?>index.php/users/login" class="active">Login</a><a href="<?php echo base_url(); ?>index.php/users/registration">Register</a>
-                            </div>
-                            <?php
+            </div>
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Palakkad Police Online Transfer Portal</h3>
+                        <p>Login to access the portal</p>
+                        <div class="page-links">
+                            <a href="<?php echo base_url(); ?>index.php/users/login" class="active">Login</a><a href="<?php echo base_url(); ?>index.php/users/registration">Register</a>
+                        </div>
+                        <?php
                             if(!empty($success_msg)){
                                 echo '<p class="statusMsg">'.$success_msg.'</p>';
                             }elseif(!empty($error_msg)){
                                 echo '<p class="statusMsg">'.$error_msg.'</p>';
                             }
                             ?>
-                            <form  action="" method="post">
-                                
-                                <input class="form-control" type="text" name="email" placeholder="Email" required=""value="">
-                                <?php echo form_error('email','<span class="help-block">','</span>'); ?>
-                                <input class="form-control" type="password" name="password" placeholder="Password" required="">
-                                <!--input type="checkbox" id="chk1"><label for="chk1">Remmeber me</label-->
-                                    <div class="form-button">
-                                        <button id="submit" type="submit" class="ibtn" name="loginSubmit" value="submit">Login</button>
-                                    </div>
-                                </form>
+                        <form  action="" method="post">
+                            
+                            <input class="form-control" type="text" name="email" placeholder="Email" required=""value="">
+                            <?php echo form_error('email','<span class="help-block">','</span>'); ?>
+                            <input class="form-control" type="password" name="password" placeholder="Password" required="">
+                            <!--input type="checkbox" id="chk1"><label for="chk1">Remmeber me</label-->
+                            <div class="form-button">
+                                <button id="submit" type="submit" class="ibtn" name="loginSubmit" value="submit">Login</button>
+                            </div>
+                        </form>
                         <!--div class="other-links">
                             <span>Or login with</span><a href="#">Facebook</a><a href="#">Google</a><a href="#">Linkedin</a>
                         </div-->
@@ -56,7 +58,6 @@
             </div>
         </div>
     </div>
-</div>
 <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>js/popper.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>js/bootstrap.min.js"></script>
