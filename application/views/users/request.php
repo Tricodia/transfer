@@ -45,21 +45,21 @@
 		<h1 class="display-4">Welcome</h1>
 		<p class="lead">This portal is meant for applying transfer requests for police stations under Palakkad SP office.<br/> Please select the type of transfer you require from the above menu</p>
 	</div>
-
 	<div class="row">
 		<div class="col-sm-3"></div>
 		<div class="col-sm-6">
 			<div class="container">
-				<form>
+				<form action="">
 					<div id="selection_container">
 						<div class="form-group">
 							<label for="exampleFormControlSelect1">Select Station 1</label>
 							<select class="form-control" id="exampleFormControlSelect1" name="1">
 								<?php
+								
 								foreach ($user->result() as $row)  
 									{  ?>
 
-										<option><?php echo $row->st_id;?></option>  
+										<option value=<?php echo $row->st_id;?>><?php echo $row->st_name;?></option> 
 
 
 									<?php }
@@ -74,7 +74,37 @@
 									foreach ($user->result() as $row)  
 										{  ?>
 
-											<option><?php echo $row->st_id;?></option>  
+											<option value=<?php echo $row->st_id;?>><?php echo $row->st_name;?></option>  
+
+
+										<?php }
+										?>
+
+									</select>
+								</div>
+								<div class="form-group">
+								<label for="exampleFormControlSelect1">Select Station 3</label>
+								<select class="form-control" id="exampleFormControlSelect2">
+									<?php
+									foreach ($user->result() as $row)  
+										{  ?>
+
+											<option value=<?php echo $row->st_id;?>><?php echo $row->st_name;?></option>
+
+
+										<?php }
+										?>
+
+									</select>
+								</div>
+								<div class="form-group">
+								<label for="exampleFormControlSelect1">Select Station 4</label>
+								<select class="form-control" id="exampleFormControlSelect2">
+									<?php
+									foreach ($user->result() as $row)  
+										{  ?>
+
+											<option value=<?php echo $row->st_id;?>><?php echo $row->st_name;?></option>
 
 
 										<?php }
@@ -85,7 +115,7 @@
 							</div>
 							
 							<div class="form-button">
-								<input type="button" class="more" value="Add">
+								<button type="submit">Submit</button>
 							</div>
 						</form>
 
@@ -105,22 +135,18 @@
 							$('#exampleFormControlSelect2 option:eq(' + index + ')').remove();
 						});
 
+
+					//Adding new dropdown on button click
 					var c = 2;
 					$('.more').on('click', function () {
 						c++;
 						var select_content = '<div class="form-group">\n'+
 						'<label for="exampleFormControlSelect1">Select Station '+ c +'</label>\n'+
-						'<select class="form-control" id="exampleFormControlSelect2">\n'+
-						
-
+						'<select class="form-control" id="exampleFormControlSelect'+c+'>\n'+
 						'<option>1</option>  \n'+
 						'<option>2</option>  \n'+
 						'<option>3</option>  \n'+
 						'<option>4</option>  \n'+
-
-
-						
-
 						'</select>\n'+
 						'</div>\n';
 						$('#selection_container').append(select_content);
