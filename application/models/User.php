@@ -47,13 +47,13 @@ class User extends CI_Model{
      */
     public function insert($data = array()) {
         //add created and modified data if not included
-        if(!array_key_exists("created", $data)){
-            $data['created'] = date("Y-m-d H:i:s");
-        }
-        if(!array_key_exists("modified", $data)){
-            $data['modified'] = date("Y-m-d H:i:s");
-        }
-        
+        // if(!array_key_exists("created", $data)){
+        //     $data['created'] = date("Y-m-d H:i:s");
+        // }
+        // if(!array_key_exists("modified", $data)){
+        //     $data['modified'] = date("Y-m-d H:i:s");
+        // }
+
         //insert user data to users table
         $insert = $this->db->insert($this->userTbl, $data);
         
@@ -65,4 +65,20 @@ class User extends CI_Model{
         }
     }
 
+    public function update($data,$id) {
+
+        $this->db->where('id', $id);
+        $update = $this->db->update($this->userTbl,$data);
+        return TRUE;
+    }
+
+
+    function getVacancy(){
+       $this->userTbl = 'stations';
+       $this->db->select('*');
+       $this->db->from($this->userTbl);
+       $query = $this->db->get();
+       return $query;
+
+   }
 }

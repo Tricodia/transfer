@@ -16,17 +16,61 @@ class Users extends CI_Controller {
     public function account(){
         $data = array();
         if($this->session->userdata('isUserLoggedIn')){
+            if($this->session->userdata('role') == "admin")
+            {
+                    $this->load->view('users/admin_account', $data);
+            }
+            elseif($this->session->userdata('role') == "constable")
+            {
+                    $this->load->view('users/constable_account', $data);
+            }
+            elseif($this->session->userdata('role') == "sup_admin")
+            {
+                    $this->load->view('users/sup_admin_account', $data);
+            }
             $data['user'] = $this->user->getRows(array('id'=>$this->session->userdata('userId')));
             //load the view
-            $this->load->view('users/account', $data);
+            //$this->load->view('users/account', $data);
         }else{
             redirect('users/login');
         }
+        
     }
     
     /*
      * User login
      */
+
+    public  function update_data()
+    {   
+        $data = array();
+        $userData = array();
+        if($this->input->post('editSubmit')){
+            $this->form_validation->set_rules('name', 'Name', 'required');
+            $this->form_validation->set_rules('email', 'Email', 'required|valid_email|callback_email_check');
+            $id1=strip_tags($this->input->post('id'));
+
+            $userData = array(
+                'name' => strip_tags($this->input->post('name')),
+                'email' => strip_tags($this->input->post('email')),
+                'phone' => strip_tags($this->input->post('phone')),
+                'gender' => strip_tags($this->input->post('gender'))
+            );
+            //echo $userData[name],$userData[email],$userData[phone];
+            if(true){
+                echo "in function ";
+                $update = $this->user->update($userData,$id1);
+                redirect('users/login');
+                if($update){
+                    $this->session->set_userdata('success_msg', 'Your registration was successfully. Please login to your account.');
+                    redirect('users/login');
+                }else{
+                    $data['error_msg'] = 'Some problems occured, please try again.';
+                    echo $data['error_msg'];
+                }
+            }
+        }
+    }
     public function login(){
         $data = array();
         if($this->session->userdata('success_msg')){
@@ -44,14 +88,16 @@ class Users extends CI_Controller {
                 $con['returnType'] = 'single';
                 $con['conditions'] = array(
                     'email'=>$this->input->post('email'),
-                    'password' => md5($this->input->post('password')),
-                    'status' => '1'
+                    'password' => md5($this->input->post('password'))
                 );
                 $checkLogin = $this->user->getRows($con);
                 if($checkLogin){
                     $this->session->set_userdata('isUserLoggedIn',TRUE);
                     $this->session->set_userdata('userId',$checkLogin['id']);
-                    redirect('users/account/');
+                    $this->session->set_userdata('role',$checkLogin['role']);
+                    $this->session->set_userdata('id',$checkLogin['id']);
+                    $this->session->set_userdata('gender',$checkLogin['gender']);
+                    
                 }else{
                     $data['error_msg'] = 'Wrong email or password, please try again.';
                 }
@@ -61,12 +107,27 @@ class Users extends CI_Controller {
         //trying auto redirect on login
         if($this->session->userdata('isUserLoggedIn')){
             $data['user'] = $this->user->getRows(array('id'=>$this->session->userdata('userId')));
-            redirect('users/account/');
+            if($this->session->userdata('role') == "admin")
+            {
+                    $this->load->view('users/admin_account', $data);
+            }
+            elseif($this->session->userdata('role') == "constable")
+            {
+                    $this->load->view('users/constable_account', $data);
+            }
+            elseif($this->session->userdata('role') == "sup_admin")
+            {
+                    $this->load->view('users/sup_admin_account', $data);
+            }
             
+        }
+        else
+        {
+            $this->load->view('login', $data);
         }
 
         //load the view
-        $this->load->view('login', $data);
+        
     }
     
     /*
@@ -75,7 +136,18 @@ class Users extends CI_Controller {
     public function registration(){
         if($this->session->userdata('isUserLoggedIn')){
             $data['user'] = $this->user->getRows(array('id'=>$this->session->userdata('userId')));
-            redirect('users/account/');
+            if($this->session->userdata('role') == "admin")
+            {
+                    $this->load->view('users/admin_account', $data);
+            }
+            elseif($this->session->userdata('role') == "constable")
+            {
+                    $this->load->view('users/constable_account', $data);
+            }
+            elseif($this->session->userdata('role') == "sup_admin")
+            {
+                    $this->load->view('users/sup_admin_account', $data);
+            }
             
         }
         $data = array();
@@ -90,7 +162,8 @@ class Users extends CI_Controller {
                 'name' => strip_tags($this->input->post('name')),
                 'email' => strip_tags($this->input->post('email')),
                 'password' => md5($this->input->post('password')),
-                'phone' => strip_tags($this->input->post('phone'))
+                'phone' => strip_tags($this->input->post('phone')),
+                'role' => strip_tags($this->input->post('role'))
             );
 
             if($this->form_validation->run() == true){
@@ -132,4 +205,32 @@ class Users extends CI_Controller {
             return TRUE;
         }
     }
+
+    public function vacancy(){
+        $data = array();
+        if($this->session->userdata('isUserLoggedIn')){
+            $data['user'] = $this->user->getVacancy();
+            //load the view
+            $this->load->view('users/vacancy', $data);
+
+        }else{
+            redirect('users/login');
+        }
+        
+    }
+
+    public function request_transfer(){
+        $data = array();
+        if($this->session->userdata('isUserLoggedIn')){
+            $data['user'] = $this->user->getVacancy();
+            //load the view
+            $this->load->view('users/request', $data);
+
+        }else{
+            redirect('users/login');
+        }
+        
+    }
+
+    
 }
