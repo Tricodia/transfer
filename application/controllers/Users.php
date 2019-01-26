@@ -232,5 +232,18 @@ class Users extends CI_Controller {
         
     }
 
+      public function general(){
+        $data = array();
+        if($this->session->userdata('isUserLoggedIn')){
+            $data['user'] = $this->user->getVacancy();
+            //load the view
+            $this->load->view('users/general', $data);
+
+        }else{
+            redirect('users/login');
+        }
+        
+    }
+
     
 }

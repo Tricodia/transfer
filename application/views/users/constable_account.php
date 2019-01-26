@@ -17,7 +17,7 @@
 					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">General Transfer</a>
+					<a class="nav-link" href="<?php echo base_url(); ?>index.php/users/general">General Transfer</a>
 				</li>
 				<li class="nav-item ">
 					<a class="nav-link" href="<?php echo base_url(); ?>index.php/users/request_transfer">Request Transfer</a>

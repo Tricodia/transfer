@@ -17,9 +17,9 @@
 					<a class="nav-link" href="<?php echo base_url(); ?>index.php/users/login">Home <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="<?php echo base_url(); ?>index.php/users/general">General Transfer</a>
+					<a class="nav-link active" href="<?php echo base_url(); ?>index.php/users/request_transfer">General Transfer</a>
 				</li>
-				<li class="nav-item active">
+				<li class="nav-item">
 					<a class="nav-link" href="<?php echo base_url(); ?>index.php/users/request_transfer">Request Transfer</a>
 				</li>
 				<li class="nav-item">
@@ -42,8 +42,8 @@
 		</div>
 	</nav>
 	<div class="jumbotron">
-		<h1 class="display-4">Request transfer</h1>
-		<p class="lead">This portal is meant for applying "Request transfer" requests for police stations under Palakkad SP office</p>
+		<h1 class="display-4">General Transfer</h1>
+		<p class="lead">This portal is meant for applying "general transfer" requests for police stations under Palakkad SP office</p>
 	</div>
 	<div class="row">
 		<div class="col-sm-3"></div>
@@ -58,9 +58,9 @@
 								<?php
 								
 								foreach ($user->result() as $row)  
-									{  ?>
+								{  ?>
 
-										<option value=<?php echo $row->st_id;?>><?php echo $row->st_name;?></option> 
+									<option value=<?php echo $row->st_id;?>><?php echo $row->st_name;?></option> 
 
 
 									<?php }
@@ -74,25 +74,9 @@
 									<option>--Select--</option>
 									<?php
 									foreach ($user->result() as $row)  
-										{  ?>
+									{  ?>
 
-											<option value=<?php echo $row->st_id;?>><?php echo $row->st_name;?></option>  
-
-
-										<?php }
-										?>
-
-									</select>
-								</div>
-								<div class="form-group">
-								<label for="exampleFormControlSelect3">Select Station 3</label>
-								<select class="form-control" id="exampleFormControlSelect3">
-									<option>--Select--</option>
-									<?php
-									foreach ($user->result() as $row)  
-										{  ?>
-
-											<option value=<?php echo $row->st_id;?>><?php echo $row->st_name;?></option>
+										<option value=<?php echo $row->st_id;?>><?php echo $row->st_name;?></option>  
 
 
 										<?php }
@@ -101,41 +85,57 @@
 									</select>
 								</div>
 								<div class="form-group">
-								<label for="exampleFormControlSelect4">Select Station 4</label>
-								<select class="form-control" id="exampleFormControlSelect4">
-									<option>--Select--</option>
-									<?php
-									foreach ($user->result() as $row)  
+									<label for="exampleFormControlSelect3">Select Station 3</label>
+									<select class="form-control" id="exampleFormControlSelect3">
+										<option>--Select--</option>
+										<?php
+										foreach ($user->result() as $row)  
 										{  ?>
 
 											<option value=<?php echo $row->st_id;?>><?php echo $row->st_name;?></option>
 
 
-										<?php }
-										?>
+											<?php }
+											?>
 
-									</select>
-								</div>
-							</div>
-							
-							<div class="form-button">
-								<button type="submit" class="btn btn-primary">Submit</button>
-							</div>
-						</form>
-						<br/>
-						<div class="form-button">
-								<button  id="more" class="btn btn-outline-warning more">Add station</button>
-							</div>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="exampleFormControlSelect4">Select Station 4</label>
+										<select class="form-control" id="exampleFormControlSelect4">
+											<option>--Select--</option>
+											<?php
+											foreach ($user->result() as $row)  
+											{  ?>
 
+												<option value=<?php echo $row->st_id;?>><?php echo $row->st_name;?></option>
+
+
+												<?php }
+												?>
+
+											</select>
+										</div>
+									</div>
+
+									<div class="form-button">
+										<button type="submit" class="btn btn-primary ">Submit</button>
+									</div>
+								</form>
+								<br/>
+						<!-- <div class="form-button">
+								<button  id="more" class="more btn btn-outline-warning">Add station</button>
+							</div> -->
+
+						</div>
 					</div>
-				</div>
-				<div class="col-sm-3"></div></div>
-				<br/><br/><!-- container end -->
-				<!-- Button trigger modal -->
-				<script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.js"></script>
-				<script type="text/javascript">
+					<div class="col-sm-3"></div></div>
+					<br/><br/><!-- container end -->
+					<!-- Button trigger modal -->
+					<script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.js"></script>
+					<script type="text/javascript">
 
-					$('#exampleFormControlSelect1').change(function() {
+						$('#exampleFormControlSelect1').change(function() {
 							// console.log("sd");
 							// dropdownval = $(this).val();
 							// $('.form-control').not(this).find('option[value="' + dropdownval + '"]').remove();
@@ -144,16 +144,16 @@
 							$('#exampleFormControlSelect3 option:eq(' + index + ')').remove();
 							$('#exampleFormControlSelect4 option:eq(' + index + ')').remove();
 						});
-					$('#exampleFormControlSelect2').change(function() {
-							 console.log("sd");
+						$('#exampleFormControlSelect2').change(function() {
+							console.log("sd");
 							// dropdownval = $(this).val();
 							// $('.form-control').not(this).find('option[value="' + dropdownval + '"]').remove();
 							var index = $('#exampleFormControlSelect2').get(0).selectedIndex;
 							$('#exampleFormControlSelect3 option:eq(' + index + ')').remove();
 							$('#exampleFormControlSelect4 option:eq(' + index + ')').remove();
 						});
-					$('#exampleFormControlSelect3').change(function() {
-							 console.log("sd");
+						$('#exampleFormControlSelect3').change(function() {
+							console.log("sd");
 							// dropdownval = $(this).val();
 							// $('.form-control').not(this).find('option[value="' + dropdownval + '"]').remove();
 							var index = $('#exampleFormControlSelect3').get(0).selectedIndex;
@@ -163,11 +163,10 @@
 					//Adding new dropdown on button click
 					var c = 4;
 					$('.more').on('click', function () {
+						console.log("hii");
 						c++;
-						var select_content = '<div class="form-group"><label for="exampleFormControlSelect'+ c +'">Select Station '+ c +'</label>';
-						var rest_content='<select class="form-control" id="exampleFormControlSelect'+c+'<option>1</option><option>2</option><option>3</option><option>4</option></select></div>';
+						var select_content = '<div class="form-group"><label for="exampleFormControlSelect'+ c+'">Select Station '+ c +'</label><select class="form-control" id="exampleFormControlSelect'+c+'<option>1</option><option>2</option><option>3</option><option>4</option></select></div>';
 						$('#selection_container').append(select_content);
-						$('#selection_container').append(rest_content);
 					});
 				</script>
 
